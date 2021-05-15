@@ -132,3 +132,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 Postcode_Estimates_Table_1.csv
+postcode analysis/postcodes_report.out
