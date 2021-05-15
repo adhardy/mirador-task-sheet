@@ -49,32 +49,63 @@ Below, we take a UK postcode population dataset\footnote{\url{http://www.nomiswe
         AA9 9AA & AA9 & 9AA & AA & AA9 & \textbf{N/A} & AA9 9 & AA \\
         AA99 9AA & AA99 & 9AA  & AA & AA99 & \textbf{N/A} & AA99 9 & AA\\
 	\end{tabular}
-\end{center}
-\caption{UK postcode formats and geographic components. `A` represents an alphabetic character, `9` represent a numeric character. Obtained from \url{https://ideal-postcodes.co.uk/guides/uk-postcode-format}.}\label{table:postcode_format}
+\end{center}s
+\caption{UK postcode formats and geographic components. `A' represents an alphabetic character, `9' represent a numeric character. Obtained from \url{https://ideal-postcodes.co.uk/guides/uk-postcode-format}.}\label{table:postcode_format}
 \end{table}
 
 \section{Anonymity Analysis}
-\section {Anonymity Threshold}
+\subsection{Anonymity Threshold}
 
-For our anonymity analysis we are most concerned about small groups, as they are most likely to contain non-anonymous data. We will use an anonymity threshold, which is the smallest group size that would be acceptable in an anonymised dataset. The number of groups which are smaller than threshold gives us a measure of how well a chosen combination of postcode component and population group anonymises the data. It is of course possible to aggregate small groups into larger ones, but this is best done when the majority of groups are already anonymised.
+For our anonymity analysis we are most concerned about small groups, as they are most likely to contain non-anonymous data. We will use an anonymity threshold, which is the smallest group size that would be acceptable in an anonymised dataset.
+
+ The number of groups which are smaller than threshold gives us a measure of how well a chosen combination of postcode component and population group anonymises the data. It is of course possible to aggregate small groups into larger ones, but this is best done when the majority of groups are already anonymised.
 
 \subsection{Postcode Component Selection}
 
+We have used the area, district, sub-district and and sector components of the postcode; these represent increasingly smaller geographic areas, with the full postcode being the smallest. Where a postcode does not have a sub-district (the sub-district is mostly used in areas of London), we have substituted the district in its place.
 
+In~\cref{fig:postcode_selection} we have plotted the percentage of of groups below the anonymity threshold, against the anonymity threshold for each postcode component and population group. Where the percentage of groups below the threshold is low, this means that the data would be well anonymised and vice versa. To use these plots:
+\begin{enumerate}
+\item Choose the population of interest.
+\begin{itemize}
+\item For example, the total population (top left graph)
+\end{itemize}
+\item Select an anonymity treshold on the x-axis. 
+\begin{itemize}
+\item This threshold should be chosen so that data is considered anonymised if all the geographic postcode groups are larger than the threshold
+\item i.e.\ a treshold of $10{^5}$ means that data is considered anonymous if the smallest group size is larger than 100,000.
+\end{itemize}
+\item The value of the curve at the chosen threshold tells you what percentage of groups are smaller than this threshold.
+\begin{itemize}
+\item e.g.\ for a threshold of $10{^5}$, only a small number the groups at the postcode area level (red curve) are smaller than 10,000 total population.
+\item This would probably be considered anonymous at this level, as the remaining small groups can be aggregated into a single larger one.
+\item In contrast, at the sector, sub-district of district level, close to 100\% of the groups are below this threshold, and the data would be defined as not anonymous.
+\end{itemize}
+\end{enumerate}
 
-We will use the area, district, sub-district and and sector. Where a postcode does not have a substrict, we will substitute the district in its place.
-
-
+We see that each curve has a region where it rises very sharply. To the left this steep region it is clear the data would be well anonymised, and to the right it would be poorly anonymised. Within the steep region it is less clear.
 
 \begin{figure}
-\includegraphics[width=1\textwidth,trim={0.1cm, 0.1cm, 0.1cm, 0.1cm},clip]{images/postode_selection.png}
-\caption{postcode selection}\label{fig:postcode_selection}
+\includegraphics[width=1\textwidth,trim={3cm, 0cm, 3cm, 0cm},clip]{images/postode_selection.png}
+\caption{Postcode component selection.}\label{fig:postcode_selection}
 \end{figure}
 
 \subsection{Population Segment Selection}
 
+If the postcode geographic component is already chosen, it might be desireable to choose what population level to publish: total population, male \& female or households. Using the same data we can arrange the plots (\cref{fig:population_selection}) to provide a similar utility to the above for this scenario:
+\begin{enumerate}
+\item Choose the postcode geographic level of interest.
+\begin{itemize}
+\item For example, the district (bottom left graph)
+\end{itemize}
+\item Select an anonymity treshold on the x-axis. 
+\item The value of the curve at the chosen threshold tells us what percentage of groups are smaller than this threshold.
+\begin{itemize}
+\item e.g.\ for a threshold of $10^{4}$, about 15\% of groups at the district level are smaller than 10,000 total population (blue curve) and about 35\% of the groups are smaller than the threshold for the remaining population measures.
+\end{itemize}
+\end{enumerate}
 \begin{figure}
-\includegraphics[width=1\textwidth,trim={0.1cm, 0.1cm, 0.1cm, 0.1cm},clip]{images/population_selection.png}
+\includegraphics[width=1\textwidth,trim={3cm, 0cm, 3cm, 0cm},clip]{images/population_selection.png}
 \caption{population selection}\label{fig:population_selection}
 \end{figure}
 
