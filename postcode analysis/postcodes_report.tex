@@ -36,21 +36,24 @@ In the US, 5-digit Zip codes are usually rounded to 3-digits when anonymising he
 
 UK postcodes can be in one of six formats and broken down into seven componenets that describe geographic areas (\cref{table:postcode_format}). Given how UK postcodes are constructed, we can`t simply truncate postcodes to three characters as is done for USA zip codes as this will result in postcode areas being combined together in ways which do not have real geographic meaning. For example, `NE3 1ED' and `NE35 2FG' are both valid postcodes. Truncating both of these to the first three characters would put these both in the `NE3' group. They should instead both be in an `NE' area group or separate `NE3' and `NE35' district groups (or another chosen postcode component group).
 
-Below, we take a UK postcode population dataset\footnote{\url{http://www.nomisweb.co.uk/output/census/2011/Postcode_Estimates_Table_1.csv}} and perform an anonymity analysis of the postcode geographic components on the four population groups present in the dataset: total population, male population, female population and occupied households.
+Below, we take a UK postcode and population dataset\footnote{\url{http://www.nomisweb.co.uk/output/census/2011/Postcode_Estimates_Table_1.csv}} and perform an anonymity analysis of the postcode geographic components on the four population groups present in the dataset: total population, male population, female population and occupied households.
 
 \begin{table}
 \begin{center}
 	\begin{tabular}{ m{0.125\textwidth}  m{0.1\textwidth}  m{0.1\textwidth}  m{0.07\textwidth}  m{0.1\textwidth}  m{0.1\textwidth}  m{0.1\textwidth}  m{0.07\textwidth}}
-		Postcode Format & Outward Code & Inward Code & Area & District & Sub-District & Sector & Unit \\ \toprule
+		\toprule
+        Postcode Format & Outward Code & Inward Code & Area & District & Sub-District & Sector & Unit \\
+        \midrule
 		AA9A 9AA & AA9A & 9AA & AA & AA9 & AA9A & AA9A 9 & AA \\
         A9A 9AA & A9A & 9AA & A & A9 & A9A & A9A 9 & AA \\
         A9 9AA & A9 & 9AA & A & A9 & \textbf{\textbf{N/A}} & A9 9 & AA \\
         A99 9AA & A99 & 9AA & A & A99 & \textbf{N/A} & A9 9 & AA \\
         AA9 9AA & AA9 & 9AA & AA & AA9 & \textbf{N/A} & AA9 9 & AA \\
         AA99 9AA & AA99 & 9AA  & AA & AA99 & \textbf{N/A} & AA99 9 & AA\\
-	\end{tabular}
-\end{center}s
+        \bottomrule
+    \end{tabular}
 \caption{UK postcode formats and geographic components. `A' represents an alphabetic character, `9' represent a numeric character. Obtained from \url{https://ideal-postcodes.co.uk/guides/uk-postcode-format}.}\label{table:postcode_format}
+\end{center}
 \end{table}
 
 \section{Anonymity Analysis}
@@ -108,5 +111,45 @@ If the postcode geographic component is already chosen, it might be desireable t
 \includegraphics[width=1\textwidth,trim={3cm, 0cm, 3cm, 0cm},clip]{images/population_selection.png}
 \caption{population selection}\label{fig:population_selection}
 \end{figure}
+
+\section{Lookup Utility}\label{lookup-utlity}
+
+\section{Examples}
+\subsection{Example A}
+\begin{itemize}
+\item Population group: \textit{Total Population}
+\item Anonymity threshold: $100,000$
+\end{itemize}
+Using top right of~\cref{fig:postcode_selection}, we see that all of the district, sub-district and sector group sizes are below the threshold, leaving only area. Using the lookup utility (\cref{lookup-utlity}) we can find that there are 5 postcode areas with a population below the treshold, listed in~\cref{table:example_a}. These five groups could be aggregated into one larger group that would be of size 138,322 - above the anonymity threshold.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ll}
+    \toprule
+    Area &  Total Population \\
+    \midrule
+    DG   &                65 \\
+    TD   &             18,331 \\
+    EC   &             33,956 \\
+    WC   &             35,745 \\
+    LD   &             50,225 \\
+    \bottomrule
+\end{tabular}
+\caption{Postcodes areas below the anonymity threshold for Example A}\label{table:example_a}
+\end{center}
+\end{table}
+
+\subsection{Example B}
+
+\begin{itemize}
+    \item Population group: \textit{Occupied Households}
+    \item Anonymity threshold: $1,200$
+\end{itemize}
+
+Area would be a confident choice in this case as only a single group is smaller than the selected anonymity threshold. However, if we want to maintain as much information as possible in the dataset, we may want to choose a smaller postcode component. At the sector level $26.2\%$ of groups are smaller than the anonymity threshold. Aggregating all of these into one group (of $\approx770,000$ in size) would leave us with $\approx6,000$ groups, many more than 105 groups we would have at the area level while still having an anonymised dataset.
+
+\section{Summary}
+
+
 
 \end{document}
