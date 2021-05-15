@@ -34,9 +34,9 @@
 
 In the US, 5-digit Zip codes are usually rounded to 3-digits when anonymising healthdata, so knowledge of the Zip code doesn’t allow small groups to be identified.  Even then, there are some 3-digit codes that have fewer than 20,000 residents, and the advice is to lump these together under a new code (000). Looking forward to how GDPR may affect data handling in the UK, is it possible to use a similar approach here?
 
-Below, a list of UK postcodes and population data\footnote{\url{http://www.nomisweb.co.uk/output/census/2011/Postcode_Estimates_Table_1.csv}} was used for an anonymity analysis on UK postcodes at different geographic levels and population groups.
+UK postcodes can be in one of six formats and broken down into seven componenets that describe geographic areas (\cref{table:postcode_format}). Given how UK postcodes are constructed, we can`t simply truncate postcodes to three characters as is done for USA zip codes as this will result in postcode areas being combined together in ways which do not have real geographic meaning. For example, `NE3 1ED' and `NE35 2FG' are both valid postcodes. Truncating both of these to the first three characters would put these both in the `NE3' group. They should instead both be in an `NE' area group or separate `NE3' and `NE35' district groups (or another chosen postcode component group).
 
-UK postcodes can be in one of six formats and broken down into 7 componenets that describe geographic areas (\cref{table:postcode_format}). We will use the area, district, sub-district and and sector. Where a postcode does not have a substrict, we will substitute the district in its place.
+Below, we take a UK postcode population dataset\footnote{\url{http://www.nomisweb.co.uk/output/census/2011/Postcode_Estimates_Table_1.csv}} and perform an anonymity analysis of the postcode geographic components on the four population groups present in the dataset: total population, male population, female population and occupied households.
 
 \begin{table}
 \begin{center}
@@ -56,7 +56,11 @@ UK postcodes can be in one of six formats and broken down into 7 componenets tha
 \section{Anonymity Analysis}
 \subsection{Postcode Component Selection}
 
-Given how UK postcodes are constructed, we can`t simply truncate postcodes to 3 characters as is done for USA zip codes as this will result in postcode areas being combined together in ways which do not have real geographic meaning. For example, `NE3 1ED' and `NE35 2FG' are both valid postcodes. Truncating both of these to the first three characters would put these both in the `NE3' group. They should instead be both in an `NE' area group or separate `NE3' and `NE35' district groups (or sector or sub-district groups).
+
+
+We will use the area, district, sub-district and and sector. Where a postcode does not have a substrict, we will substitute the district in its place.
+
+
 
 \begin{figure}
 \includegraphics[width=1\textwidth,trim={0.1cm, 0.1cm, 0.1cm, 0.1cm},clip]{images/postode_selection.png}
