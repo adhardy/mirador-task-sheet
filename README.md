@@ -1,10 +1,10 @@
 # Mirador Task Sheet
 
-## [Part 1: k-anonymity Analysis](https://github.com/adhardy/mirador-task-sheet/tree/main/k-anonymity%20analysis)
+## [Part 1: k-anonymity Analysis](https://github.com/adhardy/mirador-task-sheet/blob/main/k-anonymity%20analysis/k-anonymity%20analysis.ipynb)
 
 A random dataset of categorical labels is generated and anonymity analysis completed, exploring the imlications of the distrubution of permuation group sizes in indivudual privacy. 
 
-## [Part 2: Postcode Analysis](https://github.com/adhardy/mirador-task-sheet/tree/main/postcode%20analysis)
+## [Part 2: Postcode Analysis](https://github.com/adhardy/mirador-task-sheet/blob/main/postcode%20analysis/postcodes.ipynb)
 
 An exploration of the anonymity of postcode groupings for a sample dataset.
 
