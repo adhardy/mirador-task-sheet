@@ -32,13 +32,13 @@
 
 \section{Introduction}
 
-In the US, 5-digit Zip codes are usually rounded to 3-digits when anonymising healthdata, so knowledge of the Zip code doesn’t allow small groups to be identified.  Even then, there are some 3-digit codes that have fewer than 20,000 residents, and the advice is to lump these together under a new code (000). Looking forward to how GDPR may affect data handling in the UK, is it possible to use a similar approach here?
+In the US, 5-digit Zip codes are usually rounded to 3-digits when anonymising health data, so knowledge of the Zip code doesn’t allow small groups to be identified.  Even then, there are some 3-digit codes that have fewer than 20,000 residents, and the advice is to lump these together under a new code (000). Looking forward to how GDPR may affect data handling in the UK, is it possible to use a similar approach here?
 
 UK postcodes can be in one of six formats and broken down into seven componenets that describe geographic areas (\cref{table:postcode_format}). Given how UK postcodes are constructed, we can`t simply truncate postcodes to three characters as is done for USA zip codes as this will result in postcode areas being combined together in ways which do not have real geographic meaning. For example, `NE3 1ED' and `NE35 2FG' are both valid postcodes. Truncating both of these to the first three characters would put these both in the `NE3' group. They should instead both be in an `NE' area group or separate `NE3' and `NE35' district groups (or another chosen postcode component group).
 
 Below, we take a UK postcode and population dataset\footnote{\url{http://www.nomisweb.co.uk/output/census/2011/Postcode_Estimates_Table_1.csv}} and perform an anonymity analysis of the postcode geographic components on the four population groups present in the dataset: total population, male population, female population and occupied households.
 
-\begin{table}
+\begin{table}[h]
 \begin{center}
 	\begin{tabular}{ m{0.125\textwidth}  m{0.1\textwidth}  m{0.1\textwidth}  m{0.07\textwidth}  m{0.1\textwidth}  m{0.1\textwidth}  m{0.1\textwidth}  m{0.07\textwidth}}
 		\toprule
@@ -59,9 +59,9 @@ Below, we take a UK postcode and population dataset\footnote{\url{http://www.nom
 \section{Anonymity Analysis}
 \subsection{Anonymity Threshold}
 
-For our anonymity analysis we are most concerned about small groups, as they are most likely to contain non-anonymous data. We will use an anonymity threshold, which is the smallest group size that would be acceptable in an anonymised dataset.
+For our anonymity analysis we are most concerned about small groups, as they are most likely to contain non-anonymous data. We will define an anonymity threshold, which is the smallest group size that would be acceptable in an anonymised dataset.
 
- The number of groups which are smaller than threshold gives us a measure of how well a chosen combination of postcode component and population group anonymises the data. It is of course possible to aggregate small groups into larger ones, but this is best done when the majority of groups are already anonymised.
+ The number of groups which are smaller than threshold gives us a measure of how well a chosen combination of postcode component and population group anonymises the data. It is of course possible to aggregate small groups into larger ones, but this is best done when the majority of groups are already large enough to be anonymised.
 
 \subsection{Postcode Component Selection}
 
@@ -88,21 +88,19 @@ In~\cref{fig:postcode_selection} we have plotted the percentage of of groups bel
 
 We see that each curve has a region where it rises very sharply. To the left of this steep region it is clear the data would be well anonymised, and to the right it would be poorly anonymised. Within the steep region it is less clear and it would be necessary to look at the small groups, how these might be aggregated and the impact that would have on the data.
 
+The largest viable threshold is found by looking a the largest postcode component and largest population group: ``area'' and ``total population''. The curve (red line, top left of~\cref{fig:postcode_selection}) begins to rise sharply at an anonymity threshold of approximately 100,000. This is explored further in~\cref{exampleA}.
+
 \begin{figure}
 \includegraphics[width=1\textwidth,trim={3cm, 0cm, 3cm, 0cm},clip]{images/postcode_selection.png}
 \caption{Postcode component selection.}\label{fig:postcode_selection}
 \end{figure}
 
-\section{Lookup Utility}\label{lookup-utlity}
+\section{Web App}\label{lookup-utlity}
 
-A web app is available to assist selection:
-
-\url{https://share.streamlit.io/adhardy/postcode-component-analysis-web-app/main}
-
-This best used in conjunction with the above plots to first choose a region of interest, and then using the app to explore the data in more detail.
+A \href{https://share.streamlit.io/adhardy/mirador-task-sheet/main}{web app} is available to assist selection. This is best used in conjunction with the above plots to first choose a region of interest, and then use the web app to explore the data in more detail.
 
 \section{Examples}
-\subsection{Example A}
+\subsection{Example A}\label{exampleA}
 \begin{itemize}
 \item Population group: \textit{Total Population}
 \item Anonymity threshold: $100,000$
@@ -137,6 +135,8 @@ Area would be a confident choice in this case as only a single group is smaller 
 
 \section{Summary}
 
+We investigated if it was possible to use a similar system to that used in the USA for anonymising health data, where the zip-code is truncated to the three characters. We established that a simple truncation is not a good approach because of the way UK postcodes are constructed and we should instead use the different geographic components of the postcode to create groupings.
 
+We defined an anonymity threshold: the smallest allowable group size for a dataset to be considered anonymised. Using a sample dataset, we created tools (graphs and web app) to assist in the selection of a postcode component for a given population group and anonymity threshold. The largest viable anonymity threshold is approximately 100,000.
 
 \end{document}
