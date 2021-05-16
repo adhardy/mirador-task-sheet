@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 
 
-df_part_path = "postcode analysis/postcode_parts.pickle"
+df_part_path = "postcode analysis/data/postcode_parts.pickle"
 
 with open(df_part_path, 'rb') as handle:
     df_part = pickle.load(handle)
