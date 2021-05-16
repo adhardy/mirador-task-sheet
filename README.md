@@ -1,6 +1,6 @@
 # Mirador Task Sheet
 
-This repo as created as part of the [Mirador task sheet](https://raw.githubusercontent.com/adhardy/mirador-task-sheet/main/Mirador%20Task%20Sheet%20-%20Feb%202021.pdf).
+This repo was created as part of the [Mirador task sheet](https://raw.githubusercontent.com/adhardy/mirador-task-sheet/main/Mirador%20Task%20Sheet%20-%20Feb%202021.pdf).
 
 ## [Part 1: k-anonymity Analysis](https://github.com/adhardy/mirador-task-sheet/blob/main/k-anonymity%20analysis/k-anonymity%20analysis.ipynb)
 
