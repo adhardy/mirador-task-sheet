@@ -89,27 +89,8 @@ In~\cref{fig:postcode_selection} we have plotted the percentage of of groups bel
 We see that each curve has a region where it rises very sharply. To the left this steep region it is clear the data would be well anonymised, and to the right it would be poorly anonymised. Within the steep region it is less clear.
 
 \begin{figure}
-\includegraphics[width=1\textwidth,trim={3cm, 0cm, 3cm, 0cm},clip]{images/postode_selection.png}
+\includegraphics[width=1\textwidth,trim={3cm, 0cm, 3cm, 0cm},clip]{images/postcode_selection.png}
 \caption{Postcode component selection.}\label{fig:postcode_selection}
-\end{figure}
-
-\subsection{Population Segment Selection}
-
-If the postcode geographic component is already chosen, it might be desireable to choose what population level to publish: total population, male \& female or households. Using the same data we can arrange the plots (\cref{fig:population_selection}) to provide a similar utility to the above for this scenario:
-\begin{enumerate}
-\item Choose the postcode geographic level of interest.
-\begin{itemize}
-\item For example, the district (bottom left graph)
-\end{itemize}
-\item Select an anonymity treshold on the x-axis. 
-\item The value of the curve at the chosen threshold tells us what percentage of groups are smaller than this threshold.
-\begin{itemize}
-\item e.g.\ for a threshold of $10^{4}$, about 15\% of groups at the district level are smaller than 10,000 total population (blue curve) and about 35\% of the groups are smaller than the threshold for the remaining population measures.
-\end{itemize}
-\end{enumerate}
-\begin{figure}
-\includegraphics[width=1\textwidth,trim={3cm, 0cm, 3cm, 0cm},clip]{images/population_selection.png}
-\caption{population selection}\label{fig:population_selection}
 \end{figure}
 
 \section{Lookup Utility}\label{lookup-utlity}
