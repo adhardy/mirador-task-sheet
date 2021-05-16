@@ -1,4 +1,4 @@
-# mirador-task-sheet
+# Mirador Task Sheet
 
 ## Web App
 
