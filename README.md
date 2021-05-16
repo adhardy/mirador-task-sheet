@@ -4,7 +4,7 @@ This repo was created as part of the [Mirador task sheet](https://raw.githubuser
 
 ## [Part 1: k-anonymity Analysis](https://github.com/adhardy/mirador-task-sheet/blob/main/k-anonymity%20analysis/k-anonymity%20analysis.ipynb)
 
-A random dataset of categorical labels is generated and anonymity analysis completed, exploring the imlications of the distrubution of permuation group sizes in indivudual privacy. 
+A random dataset of categorical labels is generated and anonymity analysis completed, exploring the implications of the distrubution of permutation group sizes on indivudual privacy. 
 
 ## [Part 2: Postcode Analysis](https://github.com/adhardy/mirador-task-sheet/blob/main/postcode%20analysis/postcodes.ipynb)
 
