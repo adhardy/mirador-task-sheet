@@ -1,5 +1,7 @@
 # Mirador Task Sheet
 
+This repo as created as part of the [Mirador task sheet](https://raw.githubusercontent.com/adhardy/mirador-task-sheet/main/Mirador%20Task%20Sheet%20-%20Feb%202021.pdf).
+
 ## [Part 1: k-anonymity Analysis](https://github.com/adhardy/mirador-task-sheet/blob/main/k-anonymity%20analysis/k-anonymity%20analysis.ipynb)
 
 A random dataset of categorical labels is generated and anonymity analysis completed, exploring the imlications of the distrubution of permuation group sizes in indivudual privacy. 
