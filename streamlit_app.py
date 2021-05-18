@@ -16,11 +16,11 @@ st.title("Postcode Component Threshold Selection")
 
 part = st.selectbox(
     'Select a postcode componenet:',
-     postcode_parts)
+     postcode_parts.sort())
 
 population = st.selectbox(
     'Select a population group:',
-     population_components)
+     population_components.sort())
 
 threshold = st.text_input("Select a threshold", 1000)
 
