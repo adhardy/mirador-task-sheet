@@ -9,8 +9,8 @@ df_part_path = "postcode analysis/data/postcode_parts.pickle"
 with open(df_part_path, 'rb') as handle:
     df_part = pickle.load(handle)
 
-postcode_parts = list(df_part.keys()).sort()
-population_components = list(df_part["Area"].columns).sort()
+postcode_parts = sorted(list(df_part.keys()))
+population_components = (df_part["Area"].columns)
 
 st.title("Postcode Component Threshold Selection")
 
